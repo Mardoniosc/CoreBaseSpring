@@ -9,7 +9,6 @@ import java.sql.Timestamp;
  * 
  */
 @Entity
-@Table(name = "historico_log", schema = "core_base2")
 @NamedQuery(name = "HistoricoLog.findAll", query = "SELECT h FROM HistoricoLog h")
 public class HistoricoLog implements Serializable {
   private static final long serialVersionUID = 1L;
