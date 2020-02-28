@@ -9,6 +9,7 @@ import javax.validation.constraints.Null;
  * 
  */
 @Entity
+@Table(name = "permissao", schema = "core_base2")
 @NamedQuery(name="Permissao.findAll", query="SELECT p FROM Permissao p")
 public class Permissao implements Serializable {
 	private static final long serialVersionUID = 1L;

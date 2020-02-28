@@ -17,6 +17,7 @@ import javax.persistence.Table;
  * 
  */
 @Entity
+@Table(name = "perfil_has_permissao", schema = "core_base2")
 @NamedQuery(name="PerfilHasPermissao.findAll", query="SELECT p FROM Perfil p")
 public class PerfilHasPermissao implements Serializable {
 	private static final long serialVersionUID = 1L;
