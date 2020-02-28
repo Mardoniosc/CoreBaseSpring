@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-CoreBaseApplication<core-base-api-rest>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "br.com.tecnisys.core.base.CoreBaseApplication",
+      "projectName": "core-base-api-rest",
+      "args": ""
+    }
+  ]
+}

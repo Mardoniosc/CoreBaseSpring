@@ -14,9 +14,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.com.tecnisys.core.base.model.Perfil;
-
-
 /**
  * The persistent class for the usuario database table.
  * 

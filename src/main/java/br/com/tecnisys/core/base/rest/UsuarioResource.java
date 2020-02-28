@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,16 +20,24 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.tecnisys.core.base.model.Usuario;
 import br.com.tecnisys.core.base.repository.UsuarioRepository;
+import br.com.tecnisys.core.base.util.PasswordUtils;
 
 @RestController
 public class UsuarioResource {
-	
+
+	Logger logger = LoggerFactory.getLogger(UsuarioResource.class);
+
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
 	@CrossOrigin
 	@GetMapping("/usuarios")
 	public List<Usuario> getUsuarios(){
+		logger.error("teste");
+		logger.info("teste");
+		logger.info("teste");
+		logger.info("teste");
+
 		return usuarioRepository.findAll();
 	}
 	
@@ -74,6 +84,25 @@ public class UsuarioResource {
 		usuarioRepository.save(usuario);
 
 		return ResponseEntity.noContent().build();
+	}
+
+	@CrossOrigin
+	@GetMapping("/auth")
+	public Long autenticaUsuario(String login, String senha){
+		
+		Optional<Usuario> usuarioAutenticado = usuarioRepository.findByLogin(login) ;
+		if (!usuarioAutenticado.isPresent())
+			return usuarioAutenticado.get().getId();
+
+		String usuarioSenhaAutenticar = usuarioAutenticado.get().getSenha().toString();
+		String usernameAutenticar = usuarioAutenticado.get().getLogin().toString();
+		senha = PasswordUtils.gerarHashMD5(senha);
+
+		if(login.equals(usernameAutenticar) && senha.equals(usuarioSenhaAutenticar)){
+			return usuarioAutenticado.get().getId();
+		}
+
+		return null;
 	}
 
 }
